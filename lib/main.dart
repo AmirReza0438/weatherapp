@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/WheaterScreen.dart';
+import 'package:weather_app/WeatherScreen.dart';
 
 class ThemeManager {
   static ThemeData lightTheme = ThemeData.light(
