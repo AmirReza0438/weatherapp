@@ -7,7 +7,7 @@ import 'package:weather_app/secrets.dart';
 import 'Additional_information.dart';
 import 'package:http/http.dart' as http;
 
-import 'HourlyForecast.dart';
+import 'Hourly_Forecast.dart';
 
 class WheaterScreen extends StatefulWidget {
   const WheaterScreen({super.key});
