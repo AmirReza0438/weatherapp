@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'Citiy_Select.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/secrets.dart';
@@ -19,7 +20,10 @@ class WheaterScreen extends StatefulWidget {
 class _WheaterScreenState extends State<WheaterScreen> {
   Future<Map<String, dynamic>> gotCurrentWheater() async {
     try {
-      String? cityName = 'Tehran';
+      citycontroller.text =
+          citycontroller.text.isEmpty ? 'Tehran' : citycontroller.text;
+      String? cityName = citycontroller.text;
+
       final res = await http.get(
         Uri.parse(
           "https://api.openweathermap.org/data/2.5/forecast?q=$cityName,&APPID=$openwheaterAPIkey",
@@ -45,7 +49,23 @@ class _WheaterScreenState extends State<WheaterScreen> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        leading: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CityTextField()),
+                );
+              },
+            ),
+          ],
+        ),
         actions: [
+          Text(citycontroller.text),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
